@@ -7,7 +7,21 @@ class TranferPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ScaffoldWidget(context: context, titlePage: 'Chuyển tiền'),
+      appBar: ScaffoldWidget(
+        context: context,
+        titlePage: 'Chuyển tiền',
+        listAction: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Image.asset(
+              'assets/icon_edit.png',
+              color: Colors.white,
+              width: 20,
+              height: 20,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
