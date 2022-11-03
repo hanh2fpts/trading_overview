@@ -8,7 +8,6 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -30,14 +29,14 @@ class MenuPage extends StatelessWidget {
                   children: const [
                     Text(
                       '058C455421',
-                      style: TextStyle(color: Colors.white, fontSize: 12),
+                      style: TextStyle(color: Colors.white, fontSize: 13),
                     ),
                     SizedBox(
                       height: 5,
                     ),
                     Text(
                       'NGUYEN MINH TUAN',
-                      style: TextStyle(color: Colors.white, fontSize: 11),
+                      style: TextStyle(color: Colors.white, fontSize: 13),
                     ),
                   ],
                 ),
@@ -45,11 +44,11 @@ class MenuPage extends StatelessWidget {
                 const Icon(
                   Icons.settings,
                   color: Colors.white,
-                  size: 20,
+                  size: 25,
                 ),
                 const Spacer(),
                 const Icon(Icons.power_settings_new_rounded,
-                    color: Colors.white, size: 20),
+                    color: Colors.white, size: 25),
                 const Spacer(),
               ],
             ),
@@ -115,7 +114,10 @@ class HeadingItemWidget extends StatelessWidget {
       decoration: BoxDecoration(color: Colors.grey.shade300),
       child: Align(
         alignment: Alignment.centerLeft,
-        child: Text(headingTitle),
+        child: Text(
+          headingTitle,
+          style: const TextStyle(fontSize: 16),
+        ),
       ),
     );
   }
