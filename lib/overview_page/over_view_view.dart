@@ -1,102 +1,126 @@
 import 'package:flutter/material.dart';
 import 'package:trading_overview/constants/watchlist.dart';
 import 'package:trading_overview/overview_page/index_page.dart';
+import 'package:trading_overview/scaffold_widget.dart';
 
 class OverViewView extends StatelessWidget {
   const OverViewView({Key? key}) : super(key: key);
+  final List<Widget> listAction = const <Widget>[
+    Icon(
+      Icons.compare_arrows,
+      size: 30,
+    ),
+    SizedBox(width: 15),
+    Icon(
+      Icons.notifications,
+      size: 30,
+    ),
+    SizedBox(width: 15),
+    Icon(
+      Icons.search,
+      size: 30,
+    ),
+    SizedBox(width: 10),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const IndexPage(),
-        const Divider(thickness: 2),
-        Row(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Text(
-                'BẢNG GIÁ',
-                style: TextStyle(fontSize: 18),
-              ),
-            ),
-            const Spacer(),
-            Row(
-              children: const [
-                Icon(
-                  Icons.menu_sharp,
-                  size: 27,
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                Icon(
-                  Icons.add,
-                  size: 27,
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                Icon(
-                  Icons.arrow_forward_ios_sharp,
-                  size: 27,
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-              ],
-            )
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Scaffold(
+      appBar: ScaffoldWidget(
+          titlePage: 'EzMobile Trading',
+          listAction: listAction,
+          context: context),
+      body: Column(
+        children: [
+          const IndexPage(),
+          const Divider(thickness: 2),
+          Row(
             children: [
-              Row(
-                children: const [
-                  Text(
-                    'Mã',
-                    style: TextStyle(fontSize: 15),
-                  ),
-                  Icon(Icons.sort)
-                ],
+              const Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Text(
+                  'BẢNG GIÁ',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
+              const Spacer(),
               Row(
                 children: const [
-                  Text(
-                    'Giá',
-                    style: TextStyle(fontSize: 15),
+                  Icon(
+                    Icons.menu_sharp,
+                    size: 27,
                   ),
-                  Icon(Icons.sort)
-                ],
-              ),
-              Row(
-                children: const [
-                  Text(
-                    '+/-',
-                    style: TextStyle(fontSize: 15),
+                  SizedBox(
+                    width: 15,
                   ),
-                  Icon(Icons.sort)
-                ],
-              ),
-              Row(
-                children: const [
-                  Text(
-                    'khối lượng',
-                    style: TextStyle(fontSize: 15),
+                  Icon(
+                    Icons.add,
+                    size: 27,
                   ),
-                  Icon(Icons.sort)
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_sharp,
+                    size: 27,
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
                 ],
               )
             ],
           ),
-        ),
-        const Expanded(child: WatchListWidget())
-      ],
+          const SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: const [
+                    Text(
+                      'Mã',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    Icon(Icons.sort)
+                  ],
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      'Giá',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    Icon(Icons.sort)
+                  ],
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      '+/-',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    Icon(Icons.sort)
+                  ],
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      'khối lượng',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    Icon(Icons.sort)
+                  ],
+                )
+              ],
+            ),
+          ),
+          const Expanded(child: WatchListWidget())
+        ],
+      ),
     );
   }
 }
@@ -107,6 +131,7 @@ class WatchListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
       itemCount: WatchListConstant.listStockModel.length,
       itemBuilder: (context, index) {
         return Padding(
